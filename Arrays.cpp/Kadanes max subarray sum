@@ -13,3 +13,25 @@ public:
         
     }
 };
+// Returning the subarray...
+class Solution {
+public:
+    vector<int> maxSubArray(vector<int>& nums) {
+        long long sum=0,maxi=INT_MIN,ansstart=0,ansend=0,start=0;
+        for(int i=0;i<nums.size();i++){
+        if(sum==0) start=i;
+        sum+=nums[i];
+        if(maxi<sum) {
+            maxi=sum;
+            ansstart=start;
+            ansend=i;
+        }
+
+             if(sum<0){
+                sum=0;
+            }
+        }
+        return vector<int>(nums.begin()+ansstart,nums.begin()+ansend+1) ;
+        
+    }
+};
